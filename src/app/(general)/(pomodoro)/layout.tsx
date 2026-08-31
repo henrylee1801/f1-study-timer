@@ -6,7 +6,8 @@ import { keywords } from '@/constants/Keywords';
 
 export const metadata: Metadata = {
   title: 'F1 Study Timer',
-  description: 'An F1-themed focus timer with switchable Study (Pomodoro) and Exam (countdown) modes.',
+  description:
+    'An F1-themed focus timer with switchable Study (Pomodoro) and Exam (countdown) modes.',
   icons: './favicon.ico',
   openGraph: {
     title: 'F1 Study Timer',
