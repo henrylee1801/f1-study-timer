@@ -1,22 +1,28 @@
 echo '🏗️ Preparing your code for commit...'
 echo ''
 
+# Use bun if available (upstream default), otherwise fall back to pnpm.
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+if command -v bun >/dev/null 2>&1; then
+    RUN="bun"
+else
+    RUN="pnpm"
+fi
 
 # Auto-format code
-echo '📝 Running auto-format...'
-bun format
+echo "📝 Running auto-format... ($RUN)"
+$RUN format
 echo '✅ Format complete!'
 echo ''
 
 # Check Prettier standards
 echo '🎨 Checking code formatting...'
-bun format:check ||
+$RUN format:check ||
 (
     echo ''
     echo '❌ Formatting check failed!'
-    echo '📝 Please run "bun format" to fix styling issues, then try again.'
+    echo "📝 Please run \"$RUN format\" to fix styling issues, then try again."
     echo ''
     exit 1
 )
@@ -25,7 +31,7 @@ echo ''
 
 # Check ESLint Standards
 echo '🔍 Running linter...'
-bun lint ||
+$RUN lint ||
 (
     echo ''
     echo '❌ Linting check failed!'

@@ -1,12 +1,19 @@
 <div align="center">
-  <h1>Pitmydoro</h1>
-  
-  <img width="300" src="https://github.com/user-attachments/assets/84c0c5fa-9288-4d9e-bfa1-028c8491cd7a" alt="demo" />
-  
+  <h1>F1 Study Timer</h1>
+
   <p align="center">
-    An open-source Pomodoro timer with Formula 1 visuals
+    An F1-themed focus timer with a switchable <b>Study</b> (Pomodoro) and <b>Exam</b> (countdown) mode
   </p>
 </div>
+
+> **Fork notice.** This project is a fork of [**Pitmydoro**](https://github.com/srteerra/pitmydoro)
+> by [Angel Lopez (@srteerra)](https://github.com/srteerra), used under the **GPL-3.0** license.
+> All original design, artwork, and team liveries belong to the upstream project. This fork adds an
+> **Exam mode** (fixed countdown with section splits and milestone alerts). Because the upstream is
+> GPL-3.0, this fork is also GPL-3.0 — see [LICENSE](./LICENSE). Not affiliated with Formula 1 or any
+> of its teams or drivers.
+
+---
 
 <p align="center">
   <img alt="Next.js" src="https://img.shields.io/badge/Next.js-15-black">
@@ -45,6 +52,8 @@ Create, organize, and track your to-do list
 
 ## ✨ Features
 
+- 🎓 **Exam mode** (added in this fork): a single fixed-length countdown with editable sections, milestone alerts (halfway + configurable "minutes left" warnings), a progress bar, and a "time's up" radio call. Toggle it from the graduation-cap icon in the header.
+- 📚 **Study mode**: the original Pomodoro experience, unchanged.
 - 🏁 F1-Inspired Design: An interface where a Formula 1 car will be racing while you're in an active session. Each tire compound represents different session durations
 - ⏱️ Classic Pomodoro: 25-minute work sessions with 5-minute pit stops (configurable)
 - 🎯 Customizable Intervals: Adjust work and break durations to your pace
@@ -60,20 +69,23 @@ Create, organize, and track your to-do list
 
 ### Prerequisites
 
-- Node.js >= 20.0.0
-- npm, yarn, pnpm, or bun (preferable)
+- Node.js >= 20
+- pnpm (`npm install -g pnpm`)
 
 ### Installation
 
 ```bash
 # Step 1 - Install all the dependencies
-bun install
+pnpm install
 
-# Step 2 - Run de application
-bun dev
+# Step 2 - Run the application
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the app.
+
+> This fork pins `pnpm` and includes an `.npmrc` with `node-linker=hoisted` so that
+> transitive imports (e.g. `use-intl`) resolve the same way they do under npm/bun.
 
 ---
 

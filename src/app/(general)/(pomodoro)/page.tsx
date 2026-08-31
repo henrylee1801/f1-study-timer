@@ -9,6 +9,7 @@ import { useSeo } from '@/hooks/useSEO';
 import { SCUDERIAS } from '@/constants/Scuderias';
 import useSettingsStore from '@/stores/Settings.store';
 import { SimpleTimerSelector } from '@/components/Pomodoro/SimpleTimerSelector';
+import { Exam } from '@/components/Exam';
 import { PomodoroMode } from '@/interfaces/Settings.interface';
 import { Container } from '@chakra-ui/react';
 
@@ -45,8 +46,14 @@ export default function Home() {
   return (
     <Container minHeight={'80vh'}>
       <NextSeo {...seo} />
-      {mode === PomodoroMode.MINIMAL && <SimpleTimerSelector />}
-      <Pomodoro />
+      {mode === PomodoroMode.EXAM ? (
+        <Exam />
+      ) : (
+        <>
+          {mode === PomodoroMode.MINIMAL && <SimpleTimerSelector />}
+          <Pomodoro />
+        </>
+      )}
     </Container>
   );
 }

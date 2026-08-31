@@ -1,4 +1,8 @@
 {
+  "404": {
+    "title": "Oops... the page you're looking for doesn't exist or has been moved.",
+    "goBack": "Go back"
+  },
   "auth": {
     "join": "Log in",
     "signIn": "Sign In",
@@ -251,10 +255,6 @@
     "acceptText": "Accept",
     "cancelText": "Cancel"
   },
-  "404": {
-    "title": "Oops... the page you're looking for doesn't exist or has been moved.",
-    "goBack": "Go back"
-  },
   "sections": {
     "mainTitle": "Your pace, your race, your time",
     "about": {
@@ -289,7 +289,8 @@
     "learn": "Learn more",
     "language": "Change language",
     "theme": "Dark / Light mode",
-    "minimalMode": "Switch view mode"
+    "minimalMode": "Switch view mode",
+    "examMode": "Exam mode"
   },
   "streamOverlay": {
     "inDevelopment": "In Development",

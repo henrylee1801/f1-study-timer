@@ -11,6 +11,19 @@ export interface TireSettings {
 export enum PomodoroMode {
   F1 = 'f1',
   MINIMAL = 'minimal',
+  EXAM = 'exam',
+}
+
+export interface ExamSection {
+  id: string;
+  name: string;
+  minutes: number;
+}
+
+export interface ExamSettings {
+  duration: number;
+  sections: ExamSection[];
+  warnings: number[];
 }
 
 export interface Settings {
@@ -30,4 +43,5 @@ export interface Settings {
   enableNotifications: boolean;
   mode: PomodoroMode;
   minimalSessionDuration: number;
+  exam: ExamSettings;
 }

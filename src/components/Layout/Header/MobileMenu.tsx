@@ -6,6 +6,7 @@ import NextLink from 'next/link';
 import { LuBookText } from 'react-icons/lu';
 import { ToggleThemeMode } from '@/components/Layout/Toggles/ThemeMode';
 import { TogglePomodoroMode } from '@/components/Layout/Toggles/PomodoroMode';
+import { ToggleExamMode } from '@/components/Layout/Toggles/ExamMode';
 import GitHubStars from '@/components/GithubStars';
 import { useTranslations } from 'use-intl';
 import { useRouter } from 'next/navigation';
@@ -50,6 +51,7 @@ export const MobileMenu = ({ onClose }: { onClose: () => void }) => {
 
         <HStack gap={2} justifyContent='center'>
           <TogglePomodoroMode />
+          <ToggleExamMode />
           <ToggleThemeMode />
         </HStack>
       </VStack>

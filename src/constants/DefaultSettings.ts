@@ -45,6 +45,15 @@ export const DefaultSettings: Settings = {
   volume: 1,
   enableNotifications: true,
   minimalSessionDuration: 25,
+  exam: {
+    duration: 120,
+    sections: [
+      { id: 'section-1', name: 'Section A', minutes: 60 },
+      { id: 'section-2', name: 'Section B', minutes: 60 },
+    ],
+    warnings: [30, 15, 5, 1],
+  },
 };
 
 export const MAX_DURATION = 120;
+export const MAX_EXAM_DURATION = 360;

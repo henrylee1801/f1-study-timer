@@ -1,4 +1,8 @@
 {
+  "404": {
+    "title": "Ups... la página que buscas no existe o fue movida.",
+    "goBack": "Regresar al inicio"
+  },
   "auth": {
     "join": "Ingresar",
     "signIn": "Iniciar Sesión",
@@ -252,10 +256,6 @@
     "acceptText": "Aceptar",
     "cancelText": "Cancelar"
   },
-  "404": {
-    "title": "Ups... la página que buscas no existe o fue movida.",
-    "goBack": "Regresar al inicio"
-  },
   "sections": {
     "mainTitle": "Tu ritmo, tu carrera, tu tiempo",
     "about": {
@@ -290,7 +290,8 @@
     "learn": "Aprende más",
     "language": "Cambiar idioma",
     "theme": "Modo oscuro / claro",
-    "minimalMode": "Cambiar modo vista"
+    "minimalMode": "Cambiar modo vista",
+    "examMode": "Modo examen"
   },
   "streamOverlay": {
     "inDevelopment": "En desarrollo",

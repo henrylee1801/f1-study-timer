@@ -2,7 +2,13 @@ import { create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 import { TireTypeEnum } from '@/enums/TireType.enum';
 import { DefaultSettings } from '@/constants/DefaultSettings';
-import { PomodoroMode, Settings, TireSettings } from '@/interfaces/Settings.interface';
+import {
+  ExamSection,
+  ExamSettings,
+  PomodoroMode,
+  Settings,
+  TireSettings,
+} from '@/interfaces/Settings.interface';
 import { Locale } from '@/i18n/config';
 import { Team } from '@/interfaces/Teams.interface';
 
@@ -25,6 +31,10 @@ interface SettingsActions {
   setVolume: (volume: number) => void;
   setEnableNotifications: (enableNotifications: boolean) => void;
   setMinimalSessionDuration: (duration: number) => void;
+  setExam: (exam: Partial<ExamSettings>) => void;
+  setExamDuration: (duration: number) => void;
+  setExamSections: (sections: ExamSection[]) => void;
+  setExamWarnings: (warnings: number[]) => void;
   setSettings: (settings: Partial<Settings>) => void;
 }
 
@@ -48,6 +58,11 @@ const useSettingsStore = create<Settings & SettingsActions>()(
         enableNotifications: DefaultSettings.enableNotifications,
         currentScuderia: DefaultSettings.currentScuderia,
         minimalSessionDuration: DefaultSettings.minimalSessionDuration,
+        exam: DefaultSettings.exam,
+        setExam: (exam) => set((state) => ({ exam: { ...state.exam, ...exam } })),
+        setExamDuration: (duration) => set((state) => ({ exam: { ...state.exam, duration } })),
+        setExamSections: (sections) => set((state) => ({ exam: { ...state.exam, sections } })),
+        setExamWarnings: (warnings) => set((state) => ({ exam: { ...state.exam, warnings } })),
         setPomodoroMode: (mode) => set(() => ({ mode })),
         setSettings: (settings) => set((state) => ({ ...state, ...settings })),
         setCurrentScuderia: (team) => set(() => ({ currentScuderia: team })),

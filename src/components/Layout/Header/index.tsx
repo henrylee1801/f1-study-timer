@@ -11,6 +11,7 @@ import { AuthModal } from '@/components/Auth/AuthModal';
 import GitHubStars from '@/components/GithubStars';
 import { LuBookText, LuMegaphone, LuMenu, LuMonitorPlay } from 'react-icons/lu';
 import { TogglePomodoroMode } from '@/components/Layout/Toggles/PomodoroMode';
+import { ToggleExamMode } from '@/components/Layout/Toggles/ExamMode';
 import { Tooltip } from '@/components/ui/tooltip';
 import { useTranslations } from 'use-intl';
 import { useDrawer } from '@/contexts/DrawerContext';
@@ -196,6 +197,12 @@ export const Header = () => {
             <Tooltip openDelay={100} closeDelay={100} content={t('minimalMode')}>
               <Box as='span' display='inline-flex'>
                 <TogglePomodoroMode />
+              </Box>
+            </Tooltip>
+
+            <Tooltip openDelay={100} closeDelay={100} content={t('examMode')}>
+              <Box as='span' display='inline-flex'>
+                <ToggleExamMode />
               </Box>
             </Tooltip>
           </HStack>
