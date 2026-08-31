@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "preview": "python3 -m http.server 4321 --directory out",
     "lint": "next lint",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui",
