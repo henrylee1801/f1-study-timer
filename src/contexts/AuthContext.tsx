@@ -11,7 +11,7 @@ import {
   signOut,
   User,
 } from 'firebase/auth';
-import { auth } from '@/lib/firebase/config';
+import { auth, isFirebaseEnabled } from '@/lib/firebase/config';
 import { userService } from '@/services/user.service';
 import useUserStore from '@/stores/User.store';
 import { useOverlayStore } from '@/stores/Overlay.store';
@@ -42,8 +42,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const pendingUsername = useRef<string | undefined>(undefined);
 
   useEffect(() => {
-    // Static/offline build (no Firebase project configured): auth never resolves,
-    // so make sure we still render the app instead of hanging on the loader.
+    // Static/offline build: no Firebase project. Skip auth entirely and just
+    // render the app (timer, exam mode, settings all run on localStorage).
+    if (!isFirebaseEnabled) {
+      setLoading(false);
+      return;
+    }
+
+    // Fail-safe: if auth never resolves, still render instead of hanging.
     const failSafe = setTimeout(() => setLoading(false), 2500);
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
