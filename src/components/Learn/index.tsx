@@ -9,6 +9,7 @@ import useSessionStore from '@/stores/Session.store';
 import useSettingsStore from '@/stores/Settings.store';
 import { TiDivider } from '@/components/Layout/WrapSections/components/Divider';
 import { jersey15 } from '@/assets/fonts/Jersey';
+import { asset } from '@/utils/asset';
 
 const TOC = [
   { id: 'championship', titleKey: 'championship.title' },
@@ -96,7 +97,7 @@ const TireIcon = ({ id, size = 72 }: { id: string; size?: number }) => (
     flexShrink={0}
     aria-hidden
     style={{
-      backgroundImage: "url('/images/tires.webp')",
+      backgroundImage: `url(${asset('/images/tires.webp')})`,
       backgroundSize: `${size * 7}px auto`,
       backgroundPositionX: `-${size * TIRE_INDEX[id]}px`,
       backgroundRepeat: 'no-repeat',

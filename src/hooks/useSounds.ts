@@ -1,5 +1,6 @@
 import { Howl } from 'howler';
 import useSettingsStore from '@/stores/Settings.store';
+import { asset } from '@/utils/asset';
 
 export const useSounds = () => {
   const enableSounds = useSettingsStore((state) => state.enableSounds);
@@ -9,7 +10,7 @@ export const useSounds = () => {
     if (!enableSounds) return;
 
     const sound = new Howl({
-      src: ['sounds/play.wav'],
+      src: [asset('/sounds/play.wav')],
       volume,
     });
 
@@ -20,7 +21,7 @@ export const useSounds = () => {
     if (!enableSounds) return;
 
     const sound = new Howl({
-      src: ['sounds/resume.wav'],
+      src: [asset('/sounds/resume.wav')],
       volume,
     });
 
@@ -31,7 +32,7 @@ export const useSounds = () => {
     if (!enableSounds) return;
 
     const sound = new Howl({
-      src: ['sounds/radio.mp3'],
+      src: [asset('/sounds/radio.mp3')],
       volume,
     });
 

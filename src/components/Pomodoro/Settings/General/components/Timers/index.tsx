@@ -8,6 +8,7 @@ import useSettingsStore from '@/stores/Settings.store';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useAlert } from '@/hooks/useAlert';
 import { MAX_DURATION } from '@/constants/DefaultSettings';
+import { asset } from '@/utils/asset';
 
 export const Timers = () => {
   const { handleChangeBreakDuration, handleChangeTireDuration } = useSettings();
@@ -97,7 +98,7 @@ export const Timers = () => {
             <Box
               cursor={'pointer'}
               style={{
-                backgroundImage: "url('./images/tires.webp')",
+                backgroundImage: `url(${asset('/images/tires.webp')})`,
                 backgroundSize,
                 backgroundPositionX: `-${ICON_SIZE * idx}px`,
                 width: `${ICON_SIZE}px`,
@@ -135,7 +136,7 @@ export const Timers = () => {
           <Box
             cursor={'pointer'}
             style={{
-              backgroundImage: "url('./images/tires.webp')",
+              backgroundImage: `url(${asset('/images/tires.webp')})`,
               backgroundSize,
               backgroundPositionX: `-${ICON_SIZE * 5}px`,
               width: `${ICON_SIZE}px`,
@@ -164,7 +165,7 @@ export const Timers = () => {
           <Box
             cursor={'pointer'}
             style={{
-              backgroundImage: "url('./images/tires.webp')",
+              backgroundImage: `url(${asset('/images/tires.webp')})`,
               backgroundSize,
               backgroundPositionX: `-${ICON_SIZE * 6}px`,
               width: `${ICON_SIZE}px`,

@@ -2,7 +2,7 @@ import ChakraUIProvider from './chakraUIProvider';
 import React from 'react';
 import './globals.css';
 import { ColorModeProvider } from '@/components/ui/color-mode';
-import { NextIntlClientProvider } from 'next-intl';
+import { IntlProvider } from './intlProvider';
 import { Metadata } from 'next';
 import Head from 'next/head';
 import { AuthProvider } from '@/contexts/AuthContext';
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </Head>
 
       <body>
-        <NextIntlClientProvider>
+        <IntlProvider>
           <ChakraUIProvider>
             <AuthProvider>
               <DialogProvider>
@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </DialogProvider>
             </AuthProvider>
           </ChakraUIProvider>
-        </NextIntlClientProvider>
+        </IntlProvider>
       </body>
     </html>
   );

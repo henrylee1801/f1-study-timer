@@ -42,7 +42,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const pendingUsername = useRef<string | undefined>(undefined);
 
   useEffect(() => {
+    // Static/offline build (no Firebase project configured): auth never resolves,
+    // so make sure we still render the app instead of hanging on the loader.
+    const failSafe = setTimeout(() => setLoading(false), 2500);
+
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      clearTimeout(failSafe);
       setUser(user);
 
       if (user) {
@@ -63,7 +68,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
     });
 
-    return () => unsubscribe();
+    return () => {
+      clearTimeout(failSafe);
+      unsubscribe();
+    };
   }, []);
 
   const signUp = async (email: string, password: string, username?: string) => {

@@ -10,6 +10,7 @@ import { jersey15 } from '@/assets/fonts/Jersey';
 import Link from 'next/link';
 import { useColorModeValue } from '@/components/ui/color-mode';
 import useSettingsStore from '@/stores/Settings.store';
+import { asset } from '@/utils/asset';
 
 export const About = () => {
   const sessionStatus = useSessionStore((state) => state.status);
@@ -57,7 +58,7 @@ export const About = () => {
       >
         <Flex justifyContent={{ base: 'center', lg: 'flex-end' }}>
           <Image
-            src='/images/clock.webp'
+            src={asset('/images/clock.webp')}
             alt='Pomodoro'
             width={300}
             height={300}
@@ -70,7 +71,7 @@ export const About = () => {
       <GridItem rowStart={{ base: 3, lg: 2 }} colStart={1} colSpan={{ base: 2, lg: 1 }}>
         <Flex justifyContent={{ base: 'center', lg: 'flex-start' }}>
           <Image
-            src='/images/tasks.webp'
+            src={asset('/images/tasks.webp')}
             alt='Pomodoro'
             width={300}
             height={300}
@@ -170,7 +171,7 @@ export const About = () => {
       >
         <Flex justifyContent={{ base: 'center', lg: 'flex-end' }}>
           <Image
-            src='/images/check.webp'
+            src={asset('/images/check.webp')}
             alt='Pomodoro'
             width={400}
             height={400}

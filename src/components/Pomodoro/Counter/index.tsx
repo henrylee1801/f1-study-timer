@@ -25,6 +25,7 @@ import { TiCogOutline } from 'react-icons/ti';
 import { isDesktopDevice } from '@/utils/device.utils';
 import { useSettingsDialog } from '@/hooks/useSettingsDialog';
 import { PomodoroMode } from '@/interfaces/Settings.interface';
+import { asset } from '@/utils/asset';
 
 export const Counter = () => {
   const countdownRef = useRef<CountdownApi | null>(null);
@@ -110,7 +111,7 @@ export const Counter = () => {
             body: pomodoroT(
               status === SessionStatusEnum.IN_SESSION ? 'boxDescription' : 'boxDescriptionFocus'
             ),
-            icon: '/f1-icon.webp',
+            icon: asset('/f1-icon.webp'),
           });
         }
       }

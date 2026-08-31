@@ -29,6 +29,7 @@ import { jua } from '@/assets/fonts/Jua';
 import { MAX_EXAM_DURATION } from '@/constants/DefaultSettings';
 import { ExamSection } from '@/interfaces/Settings.interface';
 import { isDesktopDevice } from '@/utils/device.utils';
+import { asset } from '@/utils/asset';
 
 const clampDuration = (value: number) =>
   Math.min(MAX_EXAM_DURATION, Math.max(1, Math.round(value)));
@@ -75,7 +76,7 @@ export const Exam = () => {
         typeof Notification !== 'undefined' &&
         Notification.permission === 'granted'
       ) {
-        new Notification(title, { body, icon: '/f1-icon.webp' });
+        new Notification(title, { body, icon: asset('/f1-icon.webp') });
       }
     },
     [enableNotifications, radioSound]

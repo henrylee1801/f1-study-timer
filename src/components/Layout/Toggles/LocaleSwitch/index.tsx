@@ -1,6 +1,5 @@
 'use client';
 
-import { setUserLocale } from '@/services/locale.service';
 import { Box, IconButton, Image, Menu, Text } from '@chakra-ui/react';
 import { Portal } from '@zag-js/react';
 import { IoEarth } from 'react-icons/io5';
@@ -9,6 +8,7 @@ import { Tooltip } from '@/components/ui/tooltip';
 import { useTransition } from 'react';
 import useSettingsStore from '@/stores/Settings.store';
 import { useTranslations } from 'use-intl';
+import { asset } from '@/utils/asset';
 
 interface Props {
   portalDisabled?: boolean;
@@ -22,7 +22,6 @@ export function LocaleSwitch({ portalDisabled = false }: Props) {
   const onChange = (value: string | Locale) => {
     const locale = value as Locale;
     startTransition(() => {
-      setUserLocale(locale as any);
       setLocale(locale as any);
     });
   };
@@ -52,7 +51,7 @@ export function LocaleSwitch({ portalDisabled = false }: Props) {
               value='new-txt'
               onClick={() => onChange('en')}
             >
-              <Image w={5} src='/icons/usa.png' alt='English' />
+              <Image w={5} src={asset('/icons/usa.png')} alt='English' />
               <Text>English</Text>
             </Menu.Item>
             <Menu.Item
@@ -60,7 +59,7 @@ export function LocaleSwitch({ portalDisabled = false }: Props) {
               value='new-file'
               onClick={() => onChange('es')}
             >
-              <Image w={5} src='/icons/spain.png' alt='Italian' />
+              <Image w={5} src={asset('/icons/spain.png')} alt='Italian' />
               <Text>Español</Text>
             </Menu.Item>
           </Menu.Content>

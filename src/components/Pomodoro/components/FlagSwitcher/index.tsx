@@ -3,6 +3,7 @@ import { keyframes } from '@emotion/react';
 import useSessionStore from '@/stores/Session.store';
 import { useEffect } from 'react';
 import { FlagEnum } from '@/enums/Flag.enum';
+import { asset } from '@/utils/asset';
 
 const flash = keyframes`
   0% { opacity: 1; }
@@ -29,7 +30,7 @@ export const FlagSwitcher = () => {
     <Box>
       <Image
         data-pw-id={`flag-${flag}`}
-        src={`/images/${flag}-flag.webp`}
+        src={asset(`/images/${flag}-flag.webp`)}
         alt={'absolute'}
         w='auto'
         maxW='50px'

@@ -1,19 +1,19 @@
 'use client';
 
 import { Button, Center, Image, Text, VStack } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { jersey15 } from '@/assets/fonts/Jersey';
 import { useTranslations } from 'use-intl';
+import { asset } from '@/utils/asset';
 
 export default function NotFoundPage() {
-  const router = useRouter();
   const t = useTranslations('404');
 
   return (
     <Center minH='100vh'>
       <VStack textAlign='center' px={6} gap={6}>
         <Image
-          src='/images/404.webp'
+          src={asset('/images/404.webp')}
           alt='404'
           width={{ base: '100%', md: '50%' }}
           height={{ base: '100%', md: '50%' }}
@@ -34,13 +34,8 @@ export default function NotFoundPage() {
           {t('title')}
         </Text>
 
-        <Button
-          bgColor='primary.default'
-          size='lg'
-          borderRadius='full'
-          onClick={() => router.push('/')}
-        >
-          {t('goBack')}
+        <Button asChild bgColor='primary.default' size='lg' borderRadius='full'>
+          <Link href='/'>{t('goBack')}</Link>
         </Button>
       </VStack>
     </Center>

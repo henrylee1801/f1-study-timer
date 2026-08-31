@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { useState } from 'react';
 import { TireTypeEnum } from '@/enums/TireType.enum';
+import { asset } from '@/utils/asset';
 
 const tires = [
   TireTypeEnum.SOFT,
@@ -60,7 +61,7 @@ export const TimerSelector = ({ onSelect, value }: Props) => {
             data-pw-id={`tire-${index}`}
             onClick={() => handleClick(index)}
             style={{
-              backgroundImage: "url('./images/tires.webp')",
+              backgroundImage: `url(${asset('/images/tires.webp')})`,
               backgroundSize: `${ICON_SIZE * TOTAL_ICONS}px auto`,
               backgroundPositionX: `-${ICON_SIZE * index}px`,
               width: `${ICON_SIZE}px`,
