@@ -43,7 +43,7 @@ export const Footer = () => {
           <Link
             className={'cursor-pointer link underline'}
             target={'_blank'}
-            href={'https://github.com/srteerra/pitmydoro'}
+            href={'https://github.com/henrylee1801/f1-study-timer'}
           >
             <Text fontSize='sm' fontWeight='medium' color={{ base: 'gray.500', _dark: 'white' }}>
               {t('license')}

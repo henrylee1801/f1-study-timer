@@ -3,7 +3,7 @@ import { useTranslations } from 'use-intl';
 export const useSeo = () => {
   const t = useTranslations('meta');
 
-  const baseUrl = 'https://pitmydoro.com';
+  const baseUrl = 'https://henrylee1801.github.io/f1-study-timer';
 
   return {
     title: t('title'),
@@ -13,13 +13,13 @@ export const useSeo = () => {
       url: baseUrl,
       title: t('ogTitle'),
       description: t('ogDescription'),
-      site_name: 'Pitmydoro',
+      site_name: 'F1 Study Timer',
       images: [
         {
           url: `${baseUrl}/images/cover.png`,
           width: 1200,
           height: 630,
-          alt: 'Pitmydoro',
+          alt: 'F1 Study Timer',
         },
       ],
     },

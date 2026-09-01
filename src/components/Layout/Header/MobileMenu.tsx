@@ -7,7 +7,6 @@ import { LuBookText } from 'react-icons/lu';
 import { ToggleThemeMode } from '@/components/Layout/Toggles/ThemeMode';
 import { TogglePomodoroMode } from '@/components/Layout/Toggles/PomodoroMode';
 import { ToggleExamMode } from '@/components/Layout/Toggles/ExamMode';
-import GitHubStars from '@/components/GithubStars';
 import { useTranslations } from 'use-intl';
 import { useRouter } from 'next/navigation';
 import { useTimerGuard } from '@/hooks/useTimerGuard';
@@ -47,8 +46,6 @@ export const MobileMenu = ({ onClose }: { onClose: () => void }) => {
       </VStack>
 
       <VStack gap={4} align='center' mb={32}>
-        <GitHubStars />
-
         <HStack gap={2} justifyContent='center'>
           <TogglePomodoroMode />
           <ToggleExamMode />

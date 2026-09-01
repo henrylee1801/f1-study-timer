@@ -168,7 +168,7 @@ export const usePomodoro = () => {
   };
 
   const pause = async () => {
-    document.title = `Pitmydoro - ${t('pausedTitle')}`;
+    document.title = `F1 Study Timer - ${t('pausedTitle')}`;
 
     setIsActive(false);
     setStopped(true);
@@ -358,7 +358,7 @@ export const usePomodoro = () => {
   };
 
   const reset = (newTire?: TireTypeEnum | null, showRedFlag = false, fromComplete = false) => {
-    document.title = `Pitmydoro - ${t('pausedTitle')}`;
+    document.title = `F1 Study Timer - ${t('pausedTitle')}`;
 
     const abandonTaskId = currentPomodoro?.task?.id;
 

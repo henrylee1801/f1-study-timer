@@ -138,7 +138,7 @@ export const TaskShareCard = ({ task, photoURL }: Props) => {
             alignItems: 'center',
           }}
         >
-          <p style={{ margin: 0, fontSize: 12, color: '#333' }}>pitmydoro.com</p>
+          <p style={{ margin: 0, fontSize: 12, color: '#333' }}>F1 Study Timer</p>
         </div>
       </div>
     </div>
