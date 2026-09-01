@@ -12,7 +12,7 @@ import { DrawerProvider } from '@/contexts/DrawerContext';
 import { OverlaySync } from '@/components/StreamOverlay/OverlaySync';
 
 export const metadata: Metadata = {
-  title: 'Kathryn’s F1 Study Time',
+  title: 'Kathryn’s F1 Study Timer',
   icons: './favicon.ico',
   alternates: {
     canonical: 'https://henrylee1801.github.io/f1-study-timer',
@@ -28,13 +28,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={'en'} suppressHydrationWarning>
       <Head>
-        <meta property='og:title' content='Kathryn’s F1 Study Time' />
+        <meta property='og:title' content='Kathryn’s F1 Study Timer' />
         <meta property='og:description' content='An online F1 style Pomodoro timer.' />
         <meta property='og:url' content='https://henrylee1801.github.io/f1-study-timer/' />
         <meta property='og:type' content='website' />
         <meta property='og:image' content='https://henrylee1801.github.io/f1-study-timer/images/cover.png' />
         <meta name='twitter:card' content='summary_large_image' />
-        <meta name='twitter:title' content='Kathryn’s F1 Study Time' />
+        <meta name='twitter:title' content='Kathryn’s F1 Study Timer' />
         <meta name='twitter:description' content='An online F1 style Pomodoro timer.' />
         <meta name='twitter:image' content='https://henrylee1801.github.io/f1-study-timer/images/cover.png' />
       </Head>

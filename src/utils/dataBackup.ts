@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Export / import all of Kathryn's F1 Study Time local data (settings, study
+ * Export / import all of Kathryn's F1 Study Timer local data (settings, study
  * history, tasks) as a single JSON file. Everything lives in localStorage.
  */
 const KEYS = ['pitmydoro_settings', 'pitmydoro_tasks', 'kfst_study_history'];

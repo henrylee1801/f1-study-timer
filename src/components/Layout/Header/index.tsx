@@ -27,7 +27,7 @@ const Wordmark = ({ compact = false }: { compact?: boolean }) => (
       <Text as='span' color={{ base: 'red.600', _dark: 'red.400' }}>
         F1
       </Text>{' '}
-      Study Time
+      Study Timer
     </Text>
   </Link>
 );
@@ -70,7 +70,7 @@ export const Header = () => {
       component: MobileMenu,
       placement: 'start',
       size: 'xs',
-      topTitle: { label: 'Kathryn’s F1 Study Time' },
+      topTitle: { label: 'Kathryn’s F1 Study Timer' },
     });
 
   return (

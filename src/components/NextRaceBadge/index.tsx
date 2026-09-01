@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { getNextRace, daysUntilRace, formatRaceDaySydney } from '@/utils/races';
+import { getNextRace, daysUntilRace, formatRaceDay } from '@/utils/races';
 import { useThemeAccent } from '@/hooks/useThemeAccent';
 
 export const NextRaceBadge = () => {
@@ -48,7 +48,7 @@ export const NextRaceBadge = () => {
             {race.flag} {race.name.replace(' Grand Prix', ' GP')} — {when}
           </Text>
           <Text as='span' fontWeight={500} opacity={0.7}>
-            {formatRaceDaySydney(race)} AEST
+            {formatRaceDay(race.date)} AEST
           </Text>
         </Flex>
       </Link>

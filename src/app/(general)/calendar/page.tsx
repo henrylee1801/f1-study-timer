@@ -9,9 +9,9 @@ import type { Race } from '@/constants/races2026';
 import {
   getNextRace,
   daysUntilRace,
-  formatRaceDaySydney,
+  formatRaceDay,
   isRacePast,
-  sessionTimeAEST,
+  formatSessionTime,
 } from '@/utils/races';
 import { useThemeAccent } from '@/hooks/useThemeAccent';
 
@@ -108,7 +108,7 @@ export default function CalendarPage() {
                     </Text>
                   </Box>
                   <Text fontSize='xs' fontWeight={700} color={{ base: 'gray.600', _dark: 'gray.300' }} whiteSpace='nowrap' flexShrink={0}>
-                    {formatRaceDaySydney(race)}
+                    {formatRaceDay(race.date)}
                   </Text>
                   <Box
                     flexShrink={0}
@@ -138,20 +138,18 @@ export default function CalendarPage() {
                       </Text>
                     )}
                     <Box marginTop='8px'>
-                      <SessionRow label={race.isSprint ? 'Sprint qualifying' : 'Qualifying'} value={sessionTimeAEST(race.isSprint ? race.sprintQualifying : race.qualifying)} />
-                      {race.isSprint && <SessionRow label='Sprint' value={sessionTimeAEST(race.sprint)} />}
-                      {race.isSprint && <SessionRow label='Qualifying' value={sessionTimeAEST(race.qualifying)} />}
-                      <SessionRow label='Race' value={sessionTimeAEST(race.race)} />
+                      {race.isSprint && (
+                        <>
+                          <SessionRow label='Sprint qualifying' value={formatSessionTime(race.sprintQualifying)} />
+                          <SessionRow label='Sprint' value={formatSessionTime(race.sprint)} />
+                        </>
+                      )}
+                      <SessionRow label='Qualifying' value={formatSessionTime(race.qualifying)} />
+                      <SessionRow label='Race' value={formatSessionTime(race.race)} />
                     </Box>
-                    {!race.race && !race.qualifying && (
-                      <Text fontSize='2xs' color={{ base: 'gray.400', _dark: 'gray.600' }} marginTop='8px'>
-                        Session times not confirmed yet — add them in{' '}
-                        <Text as='code' fontSize='2xs'>
-                          src/constants/races2026.ts
-                        </Text>
-                        .
-                      </Text>
-                    )}
+                    <Text fontSize='2xs' color={{ base: 'gray.400', _dark: 'gray.600' }} marginTop='8px'>
+                      Times in Australian Eastern (Sydney).
+                    </Text>
                   </Box>
                 )}
               </Box>

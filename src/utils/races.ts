@@ -1,7 +1,8 @@
 import { RACES_2026, Race } from '@/constants/races2026';
 
-const SYDNEY_TZ = 'Australia/Sydney';
 const DAY_MS = 24 * 60 * 60 * 1000;
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const raceInstant = (race: Race): number => new Date(`${race.date}T00:00:00`).getTime();
 const endOfRaceDay = (race: Race): number => raceInstant(race) + DAY_MS;
@@ -20,30 +21,27 @@ export const daysUntilRace = (race: Race, now: number = Date.now()): number => {
   return Math.round((raceInstant(race) - startOfToday) / DAY_MS);
 };
 
-export const formatRaceDaySydney = (race: Race): string =>
-  new Date(`${race.date}T00:00:00`).toLocaleDateString('en-AU', {
-    weekday: 'short',
-    day: 'numeric',
-    month: 'short',
-    timeZone: SYDNEY_TZ,
-  });
-
 export const isRacePast = (race: Race, now: number = Date.now()): boolean =>
   endOfRaceDay(race) <= now;
 
-/** A confirmed ISO session time rendered in Australian Eastern time, else "TBC". */
-export const sessionTimeAEST = (iso?: string): string => {
-  if (!iso) return 'TBC';
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return 'TBC';
-  return d.toLocaleString('en-AU', {
-    weekday: 'short',
-    day: 'numeric',
-    month: 'short',
-    hour: 'numeric',
-    minute: '2-digit',
-    timeZone: SYDNEY_TZ,
-  });
+/** "Sun 8 Mar" from a "YYYY-MM-DD" date, no timezone maths. */
+export const formatRaceDay = (dateStr: string): string => {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const wd = WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
+  return `${wd} ${d} ${MONTHS[m - 1]}`;
+};
+
+/** "Sun 8 Mar, 4:00 am" from a "YYYY-MM-DDTHH:MM" Sydney wall-clock, else "TBC". */
+export const formatSessionTime = (wallClock?: string): string => {
+  if (!wallClock) return 'TBC';
+  const [datePart, timePart] = wallClock.split('T');
+  if (!datePart || !timePart) return 'TBC';
+  const [y, m, d] = datePart.split('-').map(Number);
+  const [hh, mm] = timePart.split(':').map(Number);
+  const wd = WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
+  const ampm = hh < 12 ? 'am' : 'pm';
+  const h12 = ((hh + 11) % 12) + 1;
+  return `${wd} ${d} ${MONTHS[m - 1]}, ${h12}:${String(mm).padStart(2, '0')} ${ampm}`;
 };
 
 export { RACES_2026 };
