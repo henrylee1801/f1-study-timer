@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { getNextRace, daysUntilRace, formatRaceDaySydney } from '@/utils/races';
+import { useThemeAccent } from '@/hooks/useThemeAccent';
 
 export const NextRaceBadge = () => {
   const [now, setNow] = useState<number | null>(null);
+  const { isDark, accent, accentSoft } = useThemeAccent();
 
   useEffect(() => {
     setNow(Date.now());
@@ -19,32 +21,34 @@ export const NextRaceBadge = () => {
   if (!race) return null;
 
   const days = daysUntilRace(race, now);
-  const when = days === 0 ? 'today' : days === 1 ? 'tomorrow' : `in ${days} days`;
+  const when = days <= 0 ? 'this weekend' : days === 1 ? 'tomorrow' : `in ${days} days`;
 
   return (
-    <Flex justify='center' marginTop={{ base: '4px', md: '10px' }} marginBottom='24px'>
+    <Flex justify='center' marginTop={{ base: '4px', md: '12px' }} marginBottom='28px'>
       <Link href='/calendar'>
         <Flex
           align='center'
           gap={2}
-          paddingX='14px'
-          paddingY='7px'
+          paddingX='16px'
+          paddingY='9px'
           rounded='full'
           fontSize='sm'
-          fontWeight={500}
-          backgroundColor={{ base: 'gray.100', _dark: 'dark.200' }}
-          color={{ base: 'gray.600', _dark: 'gray.300' }}
-          transition='background-color 0.15s'
-          _hover={{ backgroundColor: { base: 'gray.200', _dark: 'dark.100' } }}
+          fontWeight={600}
+          backgroundColor={accentSoft}
+          color={isDark ? 'white' : accent}
+          borderWidth='1px'
+          borderColor={accent}
+          transition='transform 0.15s'
+          _hover={{ transform: 'translateY(-1px)' }}
         >
           <Text as='span' fontSize='md'>
             🏁
           </Text>
           <Text as='span'>
-            Next race: {race.flag} {race.name.replace(' Grand Prix', ' GP')} — {when}
+            {race.flag} {race.name.replace(' Grand Prix', ' GP')} — {when}
           </Text>
-          <Text as='span' color={{ base: 'gray.400', _dark: 'gray.500' }}>
-            ({formatRaceDaySydney(race)} AEST)
+          <Text as='span' fontWeight={500} opacity={0.7}>
+            {formatRaceDaySydney(race)} AEST
           </Text>
         </Flex>
       </Link>
