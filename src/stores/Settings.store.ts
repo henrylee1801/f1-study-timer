@@ -32,6 +32,7 @@ interface SettingsActions {
   setEnableNotifications: (enableNotifications: boolean) => void;
   setMinimalSessionDuration: (duration: number) => void;
   setExam: (exam: Partial<ExamSettings>) => void;
+  setExamSubject: (subject: string) => void;
   setExamDuration: (duration: number) => void;
   setExamSections: (sections: ExamSection[]) => void;
   setExamWarnings: (warnings: number[]) => void;
@@ -60,6 +61,7 @@ const useSettingsStore = create<Settings & SettingsActions>()(
         minimalSessionDuration: DefaultSettings.minimalSessionDuration,
         exam: DefaultSettings.exam,
         setExam: (exam) => set((state) => ({ exam: { ...state.exam, ...exam } })),
+        setExamSubject: (subject) => set((state) => ({ exam: { ...state.exam, subject } })),
         setExamDuration: (duration) => set((state) => ({ exam: { ...state.exam, duration } })),
         setExamSections: (sections) => set((state) => ({ exam: { ...state.exam, sections } })),
         setExamWarnings: (warnings) => set((state) => ({ exam: { ...state.exam, warnings } })),

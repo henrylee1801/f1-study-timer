@@ -10,6 +10,7 @@ import { SCUDERIAS } from '@/constants/Scuderias';
 import useSettingsStore from '@/stores/Settings.store';
 import { SimpleTimerSelector } from '@/components/Pomodoro/SimpleTimerSelector';
 import { Exam } from '@/components/Exam';
+import { NextRaceBadge } from '@/components/NextRaceBadge';
 import { PomodoroMode } from '@/interfaces/Settings.interface';
 import { Container } from '@chakra-ui/react';
 
@@ -54,6 +55,7 @@ export default function Home() {
           <Pomodoro />
         </>
       )}
+      <NextRaceBadge />
     </Container>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Editable } from '@chakra-ui/react';
+import { Box, Button, Editable, Flex } from '@chakra-ui/react';
 import useSettingsStore from '@/stores/Settings.store';
 import { SessionStatusEnum } from '@/enums/SessionStatus.enum';
 import { MAX_DURATION } from '@/constants/DefaultSettings';
@@ -175,6 +175,37 @@ export const SimpleTimerSelector = () => {
           </>
         ),
       })}
+
+      <Flex justify='center' gap={2} wrap='wrap' marginTop='18px'>
+        {(
+          [
+            { label: 'Classic', s: 25, b: 5 },
+            { label: 'Deep', s: 50, b: 10 },
+            { label: 'Sprint', s: 15, b: 5 },
+            { label: 'Ultradian', s: 90, b: 20 },
+          ] as const
+        ).map((p) => {
+          const active =
+            localSession === p.s && localBreaks[SessionStatusEnum.SHORT_BREAK] === p.b;
+          return (
+            <Button
+              key={p.label}
+              size='xs'
+              rounded='full'
+              variant={active ? 'solid' : 'outline'}
+              colorPalette={active ? 'red' : 'gray'}
+              onClick={() => {
+                setLocalSession(p.s);
+                setLocalBreaks((prev) => ({ ...prev, [SessionStatusEnum.SHORT_BREAK]: p.b }));
+                debouncedSession(p.s);
+                debouncedBreak(SessionStatusEnum.SHORT_BREAK, p.b);
+              }}
+            >
+              {p.label} · {p.s}/{p.b}
+            </Button>
+          );
+        })}
+      </Flex>
     </Box>
   );
 };

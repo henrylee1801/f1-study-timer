@@ -1,5 +1,5 @@
 #!/bin/bash
-# Double-click this file in Finder to run the F1 Study Timer locally.
+# Double-click this file in Finder to run the Kathryn's F1 Study Time locally.
 # It serves the built app and opens it in your default browser.
 # Close the Terminal window (or press Ctrl+C) to stop it.
 
@@ -23,7 +23,7 @@ if [ ! -f "out/index.html" ]; then
 fi
 
 echo ""
-echo "  F1 Study Timer running at:  http://localhost:$PORT/"
+echo "  Kathryn's F1 Study Time running at:  http://localhost:$PORT/"
 echo "  Leave this window open. Close it to stop."
 echo ""
 

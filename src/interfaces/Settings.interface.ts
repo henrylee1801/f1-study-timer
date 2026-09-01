@@ -24,6 +24,8 @@ export interface ExamSettings {
   duration: number;
   sections: ExamSection[];
   warnings: number[];
+  /** HSC subject preset id, or 'custom'. */
+  subject: string;
 }
 
 export interface Settings {

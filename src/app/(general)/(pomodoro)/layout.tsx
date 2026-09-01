@@ -5,15 +5,15 @@ import { Metadata } from 'next';
 import { keywords } from '@/constants/Keywords';
 
 export const metadata: Metadata = {
-  title: 'F1 Study Timer',
+  title: 'Kathryn’s F1 Study Time',
   description:
     'An F1-themed focus timer with switchable Study (Pomodoro) and Exam (countdown) modes.',
   icons: './favicon.ico',
   openGraph: {
-    title: 'F1 Study Timer',
+    title: 'Kathryn’s F1 Study Time',
     description:
       'An F1-themed focus timer with switchable Study (Pomodoro) and Exam (countdown) modes.',
-    siteName: 'F1 Study Timer',
+    siteName: 'Kathryn’s F1 Study Time',
     type: 'website',
   },
   keywords: keywords,

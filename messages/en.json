@@ -258,10 +258,10 @@
   "sections": {
     "mainTitle": "Your pace, your race, your time",
     "about": {
-      "title": "What is F1 Study Timer?",
-      "description": "F1 Study Timer is a <strong>focus timer</strong> inspired by <strong>Formula 1</strong>, designed to help you achieve your <strong>tasks and goals</strong>.<br></br><br></br>It works perfectly on both <strong>desktop and mobile</strong>, and its purpose is to help you <strong>stay focused</strong> whether you're <strong>studying, writing, coding, or planning your next goal</strong>.<br></br><br></br>Make the most of the <strong>Pomodoro</strong> method combined with F1 to make focus more <strong>dynamic and motivating</strong>.",
+      "title": "What is Kathryn’s F1 Study Time?",
+      "description": "Kathryn’s F1 Study Time is a <strong>focus timer</strong> inspired by <strong>Formula 1</strong>, designed to help you achieve your <strong>tasks and goals</strong>.<br></br><br></br>It works perfectly on both <strong>desktop and mobile</strong>, and its purpose is to help you <strong>stay focused</strong> whether you're <strong>studying, writing, coding, or planning your next goal</strong>.<br></br><br></br>Make the most of the <strong>Pomodoro</strong> method combined with F1 to make focus more <strong>dynamic and motivating</strong>.",
       "title2": "How does the Pomodoro technique work?",
-      "description2": "The <wiki>Pomodoro Technique</wiki> is a time management strategy that divides work into high-focus intervals, typically <strong>25 minutes</strong>, followed by short breaks.<br></br><br></br>In <strong>F1 Study Timer</strong>, each task is part of your race strategy. Each <strong>Pomodoro</strong> is a lap, and depending on the intensity of your work, you can choose between different \"tires\": <strong>soft</strong>, <strong>medium</strong>, <strong>hard</strong>, <strong>intermediate</strong>, or <strong>wet</strong>, adapting to the conditions of your day.<br></br><br></br>You can configure the duration of each tire and choose your favorite team to personalize your environment <small>(This can be done from the Settings section)</small>.<br></br><br></br>Short and long breaks are your pit stops, essential to keep you on track and performing at your best.",
+      "description2": "The <wiki>Pomodoro Technique</wiki> is a time management strategy that divides work into high-focus intervals, typically <strong>25 minutes</strong>, followed by short breaks.<br></br><br></br>In <strong>Kathryn’s F1 Study Time</strong>, each task is part of your race strategy. Each <strong>Pomodoro</strong> is a lap, and depending on the intensity of your work, you can choose between different \"tires\": <strong>soft</strong>, <strong>medium</strong>, <strong>hard</strong>, <strong>intermediate</strong>, or <strong>wet</strong>, adapting to the conditions of your day.<br></br><br></br>You can configure the duration of each tire and choose your favorite team to personalize your environment <small>(This can be done from the Settings section)</small>.<br></br><br></br>Short and long breaks are your pit stops, essential to keep you on track and performing at your best.",
       "title3": "How to start using the Pomodoro technique?",
       "list": {
         "1": "Add the tasks you need to complete.",
@@ -275,7 +275,7 @@
       },
       "nonF1": {
         "title": "Not an F1 fan or unfamiliar with the terms?",
-        "description": "No worries, you can use F1 Study Timer without being a <strong>Formula 1</strong> fan. The app is designed to fit your needs and preferences, <strong>regardless of your F1 knowledge</strong>.",
+        "description": "No worries, you can use Kathryn’s F1 Study Time without being a <strong>Formula 1</strong> fan. The app is designed to fit your needs and preferences, <strong>regardless of your F1 knowledge</strong>.",
         "description2": "But if you'd like to learn, you can check out the <f1Blog>Basic Guide</f1Blog> where we explain some of the core concepts."
       }
     }
@@ -708,37 +708,37 @@
     },
     "cta": {
       "title": "An F1-themed Pomodoro timer",
-      "body": "F1 Study Timer is a Pomodoro timer inspired by Formula 1. Focus in work stints, take your pit stops, and keep your pace.",
+      "body": "Kathryn’s F1 Study Time is a Pomodoro timer inspired by Formula 1. Focus in work stints, take your pit stops, and keep your pace.",
       "button": "Open the timer"
     }
   },
   "meta": {
-    "title": "F1 Study Timer – F1-Themed Pomodoro Timer",
-    "description": "F1 Study Timer offers a unique take on the Pomodoro technique: focus, rest, and move forward at your own pace—no pressure.",
-    "ogTitle": "F1 Study Timer – F1-Themed Pomodoro Timer",
-    "ogDescription": "F1 Study Timer offers a unique take on the Pomodoro technique: focus, rest, and move forward at your own pace—no pressure.",
+    "title": "Kathryn’s F1 Study Time – F1-Themed Pomodoro Timer",
+    "description": "Kathryn’s F1 Study Time offers a unique take on the Pomodoro technique: focus, rest, and move forward at your own pace—no pressure.",
+    "ogTitle": "Kathryn’s F1 Study Time – F1-Themed Pomodoro Timer",
+    "ogDescription": "Kathryn’s F1 Study Time offers a unique take on the Pomodoro technique: focus, rest, and move forward at your own pace—no pressure.",
     "terms": {
-      "title": "Terms & Conditions – F1 Study Timer",
-      "description": "Read the Terms and Conditions of F1 Study Timer, which govern the use of the app and its services."
+      "title": "Terms & Conditions – Kathryn’s F1 Study Time",
+      "description": "Read the Terms and Conditions of Kathryn’s F1 Study Time, which govern the use of the app and its services."
     },
     "privacy": {
-      "title": "Privacy Policy – F1 Study Timer",
-      "description": "Learn how F1 Study Timer collects, uses, and protects your personal data."
+      "title": "Privacy Policy – Kathryn’s F1 Study Time",
+      "description": "Learn how Kathryn’s F1 Study Time collects, uses, and protects your personal data."
     },
     "cookies": {
-      "title": "Cookie Notice – F1 Study Timer",
+      "title": "Cookie Notice – Kathryn’s F1 Study Time",
       "description": "Details about our use of cookies and how to manage your preferences."
     },
     "legal": {
-      "title": "Legal Notice – F1 Study Timer",
-      "description": "Legal notice and identification of the responsible party for F1 Study Timer."
+      "title": "Legal Notice – Kathryn’s F1 Study Time",
+      "description": "Legal notice and identification of the responsible party for Kathryn’s F1 Study Time."
     },
     "pomodoro": {
-      "title": "F1 Study Timer – F1-style Pomodoro Timer",
-      "description": "Use F1 Study Timer to stay focused with a dynamic Formula 1-inspired Pomodoro timer."
+      "title": "Kathryn’s F1 Study Time – F1-style Pomodoro Timer",
+      "description": "Use Kathryn’s F1 Study Time to stay focused with a dynamic Formula 1-inspired Pomodoro timer."
     },
     "learn": {
-      "title": "Learn Formula 1 – A Beginner's Guide | F1 Study Timer",
+      "title": "Learn Formula 1 – A Beginner's Guide | Kathryn’s F1 Study Time",
       "description": "New to Formula 1? Learn the basics in minutes: how the championship and race weekend work, race length, rules, pit stops, tire compounds, and the F1 terms every fan should know."
     }
   }

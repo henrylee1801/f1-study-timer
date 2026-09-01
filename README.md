@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>F1 Study Timer</h1>
+  <h1>Kathryn’s F1 Study Time</h1>
 
   <p align="center">
     An F1-themed focus timer with a switchable <b>Study</b> (Pomodoro) and <b>Exam</b> (countdown) mode

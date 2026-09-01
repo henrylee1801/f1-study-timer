@@ -259,10 +259,10 @@
   "sections": {
     "mainTitle": "Tu ritmo, tu carrera, tu tiempo",
     "about": {
-      "title": "¿Qué es F1 Study Timer?",
-      "description": "F1 Study Timer es un <strong>temporizador de enfoque</strong> inspirado en la <strong>Fórmula 1</strong>, diseñado para acompañarte a lograr tus <strong>tareas y objetivos</strong>.<br></br><br></br>Funciona perfectamente en <strong>escritorio y móvil</strong>, y su propósito es ayudarte a <strong>mantener la concentración</strong> ya sea que estés <strong>estudiando, escribiendo, programando o planificando tu próxima meta</strong>.<br></br><br></br>Aprovecha el método <strong>Pomodoro</strong> en combinación con F1 para hacer del enfoque algo más <strong>dinámico y motivador.</strong>",
+      "title": "¿Qué es Kathryn’s F1 Study Time?",
+      "description": "Kathryn’s F1 Study Time es un <strong>temporizador de enfoque</strong> inspirado en la <strong>Fórmula 1</strong>, diseñado para acompañarte a lograr tus <strong>tareas y objetivos</strong>.<br></br><br></br>Funciona perfectamente en <strong>escritorio y móvil</strong>, y su propósito es ayudarte a <strong>mantener la concentración</strong> ya sea que estés <strong>estudiando, escribiendo, programando o planificando tu próxima meta</strong>.<br></br><br></br>Aprovecha el método <strong>Pomodoro</strong> en combinación con F1 para hacer del enfoque algo más <strong>dinámico y motivador.</strong>",
       "title2": "¿Cómo funciona la técnica Pomodoro?",
-      "description2": "La <wiki>Técnica Pomodoro</wiki>, es una estrategia de gestión del tiempo que divide el trabajo en intervalos de alta concentración, típicamente de <strong>25 minutos</strong>, seguidas de pausas breves.<br></br><br></br>En <strong>F1 Study Timer</strong>, cada tarea es parte de tu estrategia de carrera. Cada <strong>Pomodoro</strong> es una vuelta, y según la intensidad del trabajo, puedes elegir entre distintos \"neumáticos\": <strong>blandos</strong>, <strong>medios</strong>, <strong>duros</strong>, <strong>intermedios</strong> o de <strong>lluvia</strong>, adaptándote a las condiciones de tu jornada.<br></br><br></br>Puedes configurar la duración de cada neumático y elegir tu escudería favorita para personalizar tu entorno <small>(Esto lo puedes hacer desde el apartado de Configuraciones)</small>.<br></br><br></br>Las pausas cortas y largas son tus paradas en pits, esenciales para mantenerte en pista y seguir rindiendo al máximo.",
+      "description2": "La <wiki>Técnica Pomodoro</wiki>, es una estrategia de gestión del tiempo que divide el trabajo en intervalos de alta concentración, típicamente de <strong>25 minutos</strong>, seguidas de pausas breves.<br></br><br></br>En <strong>Kathryn’s F1 Study Time</strong>, cada tarea es parte de tu estrategia de carrera. Cada <strong>Pomodoro</strong> es una vuelta, y según la intensidad del trabajo, puedes elegir entre distintos \"neumáticos\": <strong>blandos</strong>, <strong>medios</strong>, <strong>duros</strong>, <strong>intermedios</strong> o de <strong>lluvia</strong>, adaptándote a las condiciones de tu jornada.<br></br><br></br>Puedes configurar la duración de cada neumático y elegir tu escudería favorita para personalizar tu entorno <small>(Esto lo puedes hacer desde el apartado de Configuraciones)</small>.<br></br><br></br>Las pausas cortas y largas son tus paradas en pits, esenciales para mantenerte en pista y seguir rindiendo al máximo.",
       "title3": "¿Cómo empezar a usar la técnica Pomodoro?",
       "list": {
         "1": "Agrega las tareas que tengas pendientes.",
@@ -276,7 +276,7 @@
       },
       "nonF1": {
         "title": "¿No eres fan de la F1 o no conoces ningún concepto?",
-        "description": "No te preocupes, puedes usar F1 Study Timer sin necesidad de ser un fanático de la <strong>Fórmula 1</strong>. La aplicación está diseñada para adaptarse a tus necesidades y preferencias, <strong>sin importar tu afinidad por la F1.</strong>",
+        "description": "No te preocupes, puedes usar Kathryn’s F1 Study Time sin necesidad de ser un fanático de la <strong>Fórmula 1</strong>. La aplicación está diseñada para adaptarse a tus necesidades y preferencias, <strong>sin importar tu afinidad por la F1.</strong>",
         "description2": "Pero si quieres aprender, puedes consultar la <f1Blog>Guía básica</f1Blog> donde te explicamos algunos conceptos básicos."
       }
     }
@@ -709,37 +709,37 @@
     },
     "cta": {
       "title": "Un Pomodoro con estilo F1",
-      "body": "F1 Study Timer es un temporizador Pomodoro inspirado en la Fórmula 1. Enfócate en sesiones de trabajo, utiliza el compuesto de neumático que más se adapte a tu ritmo y gestiona tus tareas.",
+      "body": "Kathryn’s F1 Study Time es un temporizador Pomodoro inspirado en la Fórmula 1. Enfócate en sesiones de trabajo, utiliza el compuesto de neumático que más se adapte a tu ritmo y gestiona tus tareas.",
       "button": "Ir a Pomodoro"
     }
   },
   "meta": {
-    "title": "F1 Study Timer – Temporizador Pomodoro estilo F1",
-    "description": "F1 Study Timer, una forma distinta de usar el método Pomodoro: enfócate, descansa y avanza a tu ritmo, sin presiones.",
-    "ogTitle": "F1 Study Timer – Temporizador Pomodoro estilo F1",
-    "ogDescription": "F1 Study Timer, una forma distinta de usar el método Pomodoro: enfócate, descansa y avanza a tu ritmo, sin presiones.",
+    "title": "Kathryn’s F1 Study Time – Temporizador Pomodoro estilo F1",
+    "description": "Kathryn’s F1 Study Time, una forma distinta de usar el método Pomodoro: enfócate, descansa y avanza a tu ritmo, sin presiones.",
+    "ogTitle": "Kathryn’s F1 Study Time – Temporizador Pomodoro estilo F1",
+    "ogDescription": "Kathryn’s F1 Study Time, una forma distinta de usar el método Pomodoro: enfócate, descansa y avanza a tu ritmo, sin presiones.",
     "terms": {
-      "title": "Términos y Condiciones – F1 Study Timer",
-      "description": "Consulta los Términos y Condiciones de F1 Study Timer, que regulan el uso de la aplicación y sus servicios."
+      "title": "Términos y Condiciones – Kathryn’s F1 Study Time",
+      "description": "Consulta los Términos y Condiciones de Kathryn’s F1 Study Time, que regulan el uso de la aplicación y sus servicios."
     },
     "privacy": {
-      "title": "Política de Privacidad – F1 Study Timer",
-      "description": "Conoce cómo F1 Study Timer recopila, utiliza y protege tus datos personales."
+      "title": "Política de Privacidad – Kathryn’s F1 Study Time",
+      "description": "Conoce cómo Kathryn’s F1 Study Time recopila, utiliza y protege tus datos personales."
     },
     "cookies": {
-      "title": "Aviso de Cookies – F1 Study Timer",
+      "title": "Aviso de Cookies – Kathryn’s F1 Study Time",
       "description": "Detalles sobre el uso de cookies y cómo administrar tus preferencias."
     },
     "legal": {
-      "title": "Aviso Legal – F1 Study Timer",
-      "description": "Aviso legal e identificación del responsable de F1 Study Timer."
+      "title": "Aviso Legal – Kathryn’s F1 Study Time",
+      "description": "Aviso legal e identificación del responsable de Kathryn’s F1 Study Time."
     },
     "pomodoro": {
-      "title": "F1 Study Timer – Temporizador Pomodoro estilo F1",
-      "description": "Usa F1 Study Timer para concentrarte con un temporizador Pomodoro dinámico inspirado en la Fórmula 1."
+      "title": "Kathryn’s F1 Study Time – Temporizador Pomodoro estilo F1",
+      "description": "Usa Kathryn’s F1 Study Time para concentrarte con un temporizador Pomodoro dinámico inspirado en la Fórmula 1."
     },
     "learn": {
-      "title": "Aprende Fórmula 1 – Guía para principiantes | F1 Study Timer",
+      "title": "Aprende Fórmula 1 – Guía para principiantes | Kathryn’s F1 Study Time",
       "description": "¿Nuevo en la Fórmula 1? Aprende lo básico en minutos: cómo funcionan el campeonato y el fin de semana de carrera, la duración, las reglas, las paradas en boxes, los compuestos de neumáticos y los términos de F1 que todo aficionado debería conocer."
     }
   }

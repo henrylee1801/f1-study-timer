@@ -13,13 +13,13 @@ export const useSeo = () => {
       url: baseUrl,
       title: t('ogTitle'),
       description: t('ogDescription'),
-      site_name: 'F1 Study Timer',
+      site_name: 'Kathryn’s F1 Study Time',
       images: [
         {
           url: `${baseUrl}/images/cover.png`,
           width: 1200,
           height: 630,
-          alt: 'F1 Study Timer',
+          alt: 'Kathryn’s F1 Study Time',
         },
       ],
     },

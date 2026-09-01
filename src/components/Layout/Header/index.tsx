@@ -1,142 +1,146 @@
 'use client';
 
 import { ToggleThemeMode } from '@/components/Layout/Toggles/ThemeMode';
-import { Box, Grid, GridItem, HStack, IconButton, Text } from '@chakra-ui/react';
+import { Box, Flex, IconButton, Text } from '@chakra-ui/react';
 import React from 'react';
-import { LocaleSwitch } from '@/components/Layout/Toggles/LocaleSwitch';
 import Link from 'next/link';
-import { LuBookText, LuMenu } from 'react-icons/lu';
+import { LuBookText, LuCalendarDays, LuChartColumn, LuMenu } from 'react-icons/lu';
 import { TogglePomodoroMode } from '@/components/Layout/Toggles/PomodoroMode';
 import { ToggleExamMode } from '@/components/Layout/Toggles/ExamMode';
 import { Tooltip } from '@/components/ui/tooltip';
-import { useTranslations } from 'use-intl';
 import { useDrawer } from '@/contexts/DrawerContext';
 import { useTimerGuard } from '@/hooks/useTimerGuard';
 import { MobileMenu } from './MobileMenu';
 
-const Wordmark = ({ size = 'md' }: { size?: 'sm' | 'md' }) => (
+const Wordmark = ({ compact = false }: { compact?: boolean }) => (
   <Link rel='noopener noreferrer' href={'/'}>
     <Text
       as='span'
       fontWeight='extrabold'
-      letterSpacing='tight'
-      fontSize={size === 'sm' ? 'lg' : { base: 'xl', md: '2xl' }}
+      letterSpacing='-0.01em'
+      fontSize={compact ? 'md' : { base: 'lg', md: 'xl' }}
       color={{ base: 'gray.800', _dark: 'white' }}
       whiteSpace='nowrap'
+      lineHeight='1'
     >
-      F1{' '}
+      Kathryn&rsquo;s{' '}
       <Text as='span' color={{ base: 'red.600', _dark: 'red.400' }}>
-        Study
+        F1
       </Text>{' '}
-      Timer
+      Study Time
     </Text>
   </Link>
 );
 
+const NavIcon = ({
+  href,
+  label,
+  guard,
+  children,
+}: {
+  href: string;
+  label: string;
+  guard: (e: React.MouseEvent, href: string) => void;
+  children: React.ReactNode;
+}) => (
+  <Tooltip openDelay={100} closeDelay={100} content={label}>
+    <Box as='span' display='inline-flex'>
+      <Link href={href} aria-label={label} onClick={(e) => guard(e, href)}>
+        <IconButton
+          as='span'
+          variant='ghost'
+          rounded='full'
+          size='sm'
+          color={{ base: 'gray.500', _hover: 'gray.800' }}
+          aria-label={label}
+        >
+          {children}
+        </IconButton>
+      </Link>
+    </Box>
+  </Tooltip>
+);
+
 export const Header = () => {
-  const t = useTranslations('header');
   const { openDrawer } = useDrawer();
   const { guardLink } = useTimerGuard();
 
-  const handleOpenMenu = () => {
+  const openMenu = () =>
     openDrawer({
       component: MobileMenu,
       placement: 'start',
       size: 'xs',
-      topTitle: {
-        label: 'F1 Study Timer',
-      },
+      topTitle: { label: 'Kathryn’s F1 Study Time' },
     });
-  };
 
   return (
-    <React.Fragment>
-      {/* Mobile */}
-      <Grid
-        display={{ base: 'grid', lg: 'none' }}
-        templateColumns='1fr auto 1fr'
-        alignItems='center'
-        paddingX={4}
-        paddingY={4}
-        minH='72px'
-      >
-        <GridItem justifySelf='start'>
+    <Flex
+      as='header'
+      align='center'
+      justify='space-between'
+      gap={3}
+      paddingX={{ base: 4, md: 8 }}
+      paddingY={{ base: 3, md: 5 }}
+      minH={{ base: '64px', md: '76px' }}
+      maxW='1100px'
+      marginX='auto'
+      w='full'
+    >
+      {/* Left: nav (desktop) / menu (mobile) */}
+      <Flex align='center' gap={1} flex='1' minW={0}>
+        <Box display={{ base: 'inline-flex', md: 'none' }}>
           <IconButton
             aria-label='Open menu'
             variant='ghost'
             rounded='full'
-            color={{ base: 'gray.600', _hover: 'gray.800' }}
-            onClick={handleOpenMenu}
+            size='sm'
+            color={{ base: 'gray.600', _hover: 'gray.900' }}
+            onClick={openMenu}
           >
             <LuMenu />
           </IconButton>
-        </GridItem>
+        </Box>
+        <Flex align='center' gap={1} display={{ base: 'none', md: 'inline-flex' }}>
+          <NavIcon href='/stats' label='Study stats' guard={guardLink}>
+            <LuChartColumn />
+          </NavIcon>
+          <NavIcon href='/calendar' label='F1 calendar' guard={guardLink}>
+            <LuCalendarDays />
+          </NavIcon>
+          <NavIcon href='/learn' label='Learn Formula 1' guard={guardLink}>
+            <LuBookText />
+          </NavIcon>
+        </Flex>
+      </Flex>
 
-        <GridItem justifySelf='center' minW={0}>
-          <Wordmark size='sm' />
-        </GridItem>
+      {/* Center: wordmark */}
+      <Flex align='center' justify='center' flexShrink={0}>
+        <Box display={{ base: 'block', md: 'none' }}>
+          <Wordmark compact />
+        </Box>
+        <Box display={{ base: 'none', md: 'block' }}>
+          <Wordmark />
+        </Box>
+      </Flex>
 
-        <GridItem justifySelf='end' />
-      </Grid>
-
-      {/* Desktop */}
-      <Grid
-        display={{ base: 'none', lg: 'grid' }}
-        templateColumns='1fr'
-        alignItems='center'
-        paddingX={{ base: 4, lg: 10 }}
-        paddingY={{ base: 5, lg: 10 }}
-        minH='100px'
-      >
-        <GridItem display='flex' justifyContent='center'>
-          <HStack gap={1} maxW='100%'>
-            <Tooltip openDelay={100} closeDelay={100} content={t('learn')}>
-              <Box as='span' display='inline-flex'>
-                <Link
-                  href={'/learn'}
-                  aria-label='Learn Formula 1'
-                  onClick={(e) => guardLink(e, '/learn')}
-                >
-                  <IconButton
-                    as={'span'}
-                    variant={'ghost'}
-                    rounded='full'
-                    size={{ base: 'sm', md: 'md' }}
-                    color={{ base: 'gray.500', _hover: 'gray.700' }}
-                    aria-label='Learn Formula 1'
-                  >
-                    <LuBookText />
-                  </IconButton>
-                </Link>
-              </Box>
-            </Tooltip>
-
-            <LocaleSwitch />
-
-            <Box paddingX={{ base: 2, md: 4 }}>
-              <Wordmark />
-            </Box>
-
-            <Tooltip openDelay={100} closeDelay={100} content={t('theme')}>
-              <Box as='span' display='inline-flex'>
-                <ToggleThemeMode />
-              </Box>
-            </Tooltip>
-
-            <Tooltip openDelay={100} closeDelay={100} content={t('minimalMode')}>
-              <Box as='span' display='inline-flex'>
-                <TogglePomodoroMode />
-              </Box>
-            </Tooltip>
-
-            <Tooltip openDelay={100} closeDelay={100} content={t('examMode')}>
-              <Box as='span' display='inline-flex'>
-                <ToggleExamMode />
-              </Box>
-            </Tooltip>
-          </HStack>
-        </GridItem>
-      </Grid>
-    </React.Fragment>
+      {/* Right: theme + mode toggles */}
+      <Flex align='center' justify='flex-end' gap={1} flex='1' minW={0}>
+        <Tooltip openDelay={100} closeDelay={100} content='Dark / light'>
+          <Box as='span' display='inline-flex'>
+            <ToggleThemeMode />
+          </Box>
+        </Tooltip>
+        <Tooltip openDelay={100} closeDelay={100} content='Full / minimal view'>
+          <Box as='span' display={{ base: 'none', sm: 'inline-flex' }}>
+            <TogglePomodoroMode />
+          </Box>
+        </Tooltip>
+        <Tooltip openDelay={100} closeDelay={100} content='Study / exam mode'>
+          <Box as='span' display='inline-flex'>
+            <ToggleExamMode />
+          </Box>
+        </Tooltip>
+      </Flex>
+    </Flex>
   );
 };

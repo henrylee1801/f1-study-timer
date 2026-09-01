@@ -26,6 +26,7 @@ import { isDesktopDevice } from '@/utils/device.utils';
 import { useSettingsDialog } from '@/hooks/useSettingsDialog';
 import { PomodoroMode } from '@/interfaces/Settings.interface';
 import { asset } from '@/utils/asset';
+import { useRecordSession } from '@/hooks/useStudyStats';
 
 export const Counter = () => {
   const countdownRef = useRef<CountdownApi | null>(null);
@@ -63,6 +64,8 @@ export const Counter = () => {
   const { currentPomodoro, isActive, isEndingSoon, estTimeFinish, setIsEndingSoon } =
     usePomodoroStore();
   const setOverlayTiming = usePomodoroStore((state) => state.setOverlayTiming);
+  const currentTask = useTaskStore((state) => state.currentTask);
+  const recordSession = useRecordSession();
   const lastTotalRef = useRef(0);
 
   const backButtonColor =
@@ -219,6 +222,17 @@ export const Counter = () => {
   };
 
   const handleComplete = () => {
+    if (status === SessionStatusEnum.IN_SESSION) {
+      const sessionMinutes =
+        mode === PomodoroMode.MINIMAL
+          ? minimalSessionDuration
+          : tiresSettings[selectedTire]?.duration;
+      recordSession({
+        minutes: Number(sessionMinutes) || 0,
+        kind: 'study',
+        label: currentTask?.title || undefined,
+      });
+    }
     handleIntervalComplete();
     complete();
   };

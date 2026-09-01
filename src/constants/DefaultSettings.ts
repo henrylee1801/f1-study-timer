@@ -46,6 +46,7 @@ export const DefaultSettings: Settings = {
   enableNotifications: true,
   minimalSessionDuration: 25,
   exam: {
+    subject: 'custom',
     duration: 120,
     sections: [
       { id: 'section-1', name: 'Section A', minutes: 60 },

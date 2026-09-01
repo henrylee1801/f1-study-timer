@@ -30,6 +30,8 @@ import { MAX_EXAM_DURATION } from '@/constants/DefaultSettings';
 import { ExamSection } from '@/interfaces/Settings.interface';
 import { isDesktopDevice } from '@/utils/device.utils';
 import { asset } from '@/utils/asset';
+import { HSC_SUBJECTS } from '@/constants/hscSubjects';
+import { useRecordSession } from '@/hooks/useStudyStats';
 
 const clampDuration = (value: number) =>
   Math.min(MAX_EXAM_DURATION, Math.max(1, Math.round(value)));
@@ -44,9 +46,38 @@ export const Exam = () => {
   const currentScuderia = useSettingsStore((state) => state.currentScuderia);
   const enableNotifications = useSettingsStore((state) => state.enableNotifications);
   const exam = useSettingsStore((state) => state.exam);
+  const setExam = useSettingsStore((state) => state.setExam);
+  const setExamSubject = useSettingsStore((state) => state.setExamSubject);
   const setExamDuration = useSettingsStore((state) => state.setExamDuration);
   const setExamSections = useSettingsStore((state) => state.setExamSections);
   const setExamWarnings = useSettingsStore((state) => state.setExamWarnings);
+  const recordSession = useRecordSession();
+
+  const subjectLabel =
+    HSC_SUBJECTS.find((s) => s.id === exam.subject)?.name ?? 'Exam run';
+  const recordedRef = useRef(false);
+
+  const recordIfWorthIt = (consumedMs: number) => {
+    if (recordedRef.current) return;
+    if (consumedMs >= 60_000) {
+      recordedRef.current = true;
+      recordSession({ minutes: consumedMs / 60_000, kind: 'exam', label: subjectLabel });
+    }
+  };
+
+  const applySubject = (id: string) => {
+    if (id === 'custom') {
+      setExamSubject('custom');
+      return;
+    }
+    const preset = HSC_SUBJECTS.find((s) => s.id === id);
+    if (!preset) return;
+    setExam({
+      subject: id,
+      duration: preset.duration,
+      sections: preset.sections.map((s) => ({ ...s, id: makeSectionId() })),
+    });
+  };
 
   const totalMs = exam.duration * 60_000;
 
@@ -55,16 +86,18 @@ export const Exam = () => {
   const endsAtRef = useRef<number | null>(null);
   const firedRef = useRef<Set<string>>(new Set());
   const lastSectionRef = useRef<number>(0);
+  // True once a run has been started, until the next reset. Distinguishes an
+  // untouched/reset timer (should track the configured duration) from a paused
+  // one (must keep its remaining time).
+  const startedRef = useRef(false);
 
-  const isIdle = !running && remainingMs === totalMs;
+  const isIdle = !running && !startedRef.current;
 
-  // Keep the idle clock in sync when the configured duration changes.
+  // Untouched timer follows the configured total (e.g. after picking a subject).
   useEffect(() => {
-    if (!running && (remainingMs === 0 || remainingMs > totalMs || isIdle)) {
-      setRemainingMs(totalMs);
-    }
+    if (!running && !startedRef.current) setRemainingMs(totalMs);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalMs]);
+  }, [totalMs, running]);
 
   const notify = useCallback(
     (title: string, body: string) => {
@@ -105,6 +138,7 @@ export const Exam = () => {
     if (next <= 0) {
       endsAtRef.current = null;
       setRunning(false);
+      recordIfWorthIt(totalMs);
       notify("Time's up", 'Pens down — the exam window is over.');
       document.title = "Time's up - Exam";
       return;
@@ -154,8 +188,10 @@ export const Exam = () => {
     endsAtRef.current = Date.now() + remainingMs;
     if (isIdle) {
       firedRef.current = new Set();
+      recordedRef.current = false;
       lastSectionRef.current = sectionView.currentIndex === -1 ? 0 : sectionView.currentIndex;
     }
+    startedRef.current = true;
     setRunning(true);
     playSound();
   };
@@ -170,8 +206,11 @@ export const Exam = () => {
   };
 
   const handleReset = () => {
+    recordIfWorthIt(totalMs - remainingMs);
     endsAtRef.current = null;
     firedRef.current = new Set();
+    recordedRef.current = false;
+    startedRef.current = false;
     lastSectionRef.current = 0;
     setRunning(false);
     setRemainingMs(totalMs);
@@ -405,6 +444,33 @@ export const Exam = () => {
         >
           <Flex align='center' justify='space-between' marginBottom='12px'>
             <Text fontSize='sm' fontWeight={600} color={{ base: 'gray.600', _dark: 'gray.300' }}>
+              HSC subject
+            </Text>
+            <select
+              value={exam.subject}
+              onChange={(e) => applySubject(e.target.value)}
+              style={{
+                fontSize: '0.875rem',
+                padding: '6px 10px',
+                borderRadius: '6px',
+                border: '1px solid var(--chakra-colors-gray-300, #cbd5e0)',
+                background: isDark ? '#171717' : '#fff',
+                color: 'inherit',
+                cursor: 'pointer',
+                maxWidth: '230px',
+              }}
+            >
+              <option value='custom'>Custom</option>
+              {HSC_SUBJECTS.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          </Flex>
+
+          <Flex align='center' justify='space-between' marginBottom='12px'>
+            <Text fontSize='sm' fontWeight={600} color={{ base: 'gray.600', _dark: 'gray.300' }}>
               Total exam time
             </Text>
             <HStack gap={2}>
@@ -416,7 +482,10 @@ export const Exam = () => {
                 min={1}
                 max={MAX_EXAM_DURATION}
                 value={exam.duration}
-                onChange={(e) => setExamDuration(clampDuration(Number(e.target.value) || 1))}
+                onChange={(e) => {
+                  setExamDuration(clampDuration(Number(e.target.value) || 1));
+                  if (exam.subject !== 'custom') setExamSubject('custom');
+                }}
               />
               <Text fontSize='sm' color={{ base: 'gray.500', _dark: 'gray.400' }}>
                 min
