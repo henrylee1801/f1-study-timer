@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import Countdown, { CountdownApi, zeroPad } from 'react-countdown';
-import { Box, Center, Flex, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Center, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react';
 import { GrPowerReset } from 'react-icons/gr';
 import { RippleButton } from '@/components/Pomodoro/components/RippleButton';
 import moment from 'moment';
@@ -39,8 +39,6 @@ export const Counter = () => {
   const pomodoroT = useTranslations('pomodoro');
   const settingsT = useTranslations('settings');
   const {
-    incompletePomodoros,
-    completedPomodoros,
     start,
     pause,
     resume,
@@ -51,7 +49,6 @@ export const Counter = () => {
     getCurrentDuration,
   } = usePomodoro();
   const status = useSessionStore((state) => state.status);
-  const tasks = useTaskStore((state) => state.tasks);
   const tiresSettings = useSettingsStore((state) => state.tiresSettings);
   const enableNotifications = useSettingsStore((state) => state.enableNotifications);
   const breaksDuration = useSettingsStore((state) => state.breaksDuration);
@@ -392,42 +389,16 @@ export const Counter = () => {
         {isActive ? pomodoroT('pauseTimer') : pomodoroT('startTimer')}
       </RippleButton>
 
-      <Center>
-        <Flex
-          gap={3}
-          flexWrap='wrap'
-          justifyContent='center'
-          textAlign='center'
-          color={{ base: 'gray.500', _dark: 'gray.400' }}
-        >
-          <Text fontSize='sm'>
-            {!tasks?.length && (
-              <Text as={'span'} marginRight={2}>
-                {pomodoroT('noPomodoros')}
-              </Text>
-            )}
-
-            {!!tasks.length && (
-              <>
-                <Text as={'span'} marginRight={2}>
-                  Pomodoros:
-                </Text>
-
-                <Text as='span' fontWeight='bolder' color={{ base: 'gray.800', _dark: 'gray.200' }}>
-                  {completedPomodoros} / {incompletePomodoros}
-                </Text>
-              </>
-            )}
-          </Text>
-          <Text as={'p'} fontSize='sm'>
-            {pomodoroT('estFinishAt')}
-            {': '}
-            <Text as='span' fontWeight='bolder' color={{ base: 'gray.800', _dark: 'gray.200' }}>
-              {estTimeFinish || '--:--'}
+      {isActive && estTimeFinish && (
+        <Center>
+          <Text fontSize='sm' color={{ base: 'gray.500', _dark: 'gray.400' }}>
+            Ends around{' '}
+            <Text as='span' fontWeight='bold' color={{ base: 'gray.800', _dark: 'gray.200' }}>
+              {estTimeFinish}
             </Text>
           </Text>
-        </Flex>
-      </Center>
+        </Center>
+      )}
     </React.Fragment>
   );
 };

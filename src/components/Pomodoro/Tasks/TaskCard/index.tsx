@@ -4,9 +4,9 @@ import { HiDotsVertical } from 'react-icons/hi';
 import { MdModeEdit, MdOutlineCheck, MdOutlineRestoreFromTrash } from 'react-icons/md';
 import { IoIosStats } from 'react-icons/io';
 import { TiTimes } from 'react-icons/ti';
-import { FaCheck } from 'react-icons/fa';
+import { LuMinus, LuPlus } from 'react-icons/lu';
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from '@/components/ui/menu';
-import { Box, Card, Flex, IconButton, Input, NumberInput, Text, Textarea } from '@chakra-ui/react';
+import { Box, Button, Card, Flex, IconButton, Input, Text, Textarea } from '@chakra-ui/react';
 import { useTranslations } from 'use-intl';
 import { useAlert } from '@/hooks/useAlert';
 import { useTaskStore } from '@/stores/Tasks.store';
@@ -29,7 +29,7 @@ export const TaskCard = ({ task, onTaskClick, draggableIcon }: Props) => {
   const [taskTitle, setTaskTitle] = React.useState<string>(task.title);
   const [taskDescription, setTaskDescription] = React.useState<string>(task.description);
   const { theme } = useTheme();
-  const { confirmAlert, toastSuccess, toastWarning } = useAlert();
+  const { confirmAlert, toastSuccess } = useAlert();
   const statsT = useTranslations('stats');
   const t = useTranslations('pomodoro.tasks');
   const [taskPomodoros, setTaskPomodoros] = React.useState<number>(task.estimatedPomodoros);
@@ -219,9 +219,6 @@ export const TaskCard = ({ task, onTaskClick, draggableIcon }: Props) => {
                     overflowWrap={'anywhere'}
                     lineClamp='2'
                   >
-                    <Text as={'span'} color={'gray.400'}>
-                      #{task.order}
-                    </Text>{' '}
                     {task.title}
                   </Text>
                   <Text
@@ -240,9 +237,14 @@ export const TaskCard = ({ task, onTaskClick, draggableIcon }: Props) => {
           )}
 
           {!isCurrentEditing && (
-            <Flex alignItems='center' gap={2} flexShrink={0}>
-              <Text minW={'40px'}>
-                {taskCompletedPomodoros} / {taskPomodoros}
+            <Flex alignItems='center' gap={1} flexShrink={0}>
+              <Text
+                fontSize='sm'
+                fontVariantNumeric='tabular-nums'
+                color={{ base: 'gray.500', _dark: 'gray.400' }}
+                title='Focus sessions done / planned'
+              >
+                {taskCompletedPomodoros}/{taskPomodoros}
               </Text>
 
               <MenuRoot
@@ -327,75 +329,59 @@ export const TaskCard = ({ task, onTaskClick, draggableIcon }: Props) => {
         </Card.Body>
 
         {isCurrentEditing && (
-          <Card.Footer flexWrap={'wrap'} justifyContent='space-between'>
-            <Flex gap={4} alignItems='center'>
-              <Text fontSize={'sm'} fontWeight={'bold'}>
-                {t('noPomodoros')}
+          <Card.Footer flexWrap={'wrap'} gap={4} justifyContent='space-between' alignItems='flex-end'>
+            <Box>
+              <Text fontSize='xs' fontWeight={600} color={{ base: 'gray.500', _dark: 'gray.400' }} marginBottom='4px'>
+                Focus sessions planned
               </Text>
-              <NumberInput.Root
-                width='80px'
-                disabled={!!task.completedAt}
-                defaultValue={String(taskCompletedPomodoros)}
-                onValueChange={(e) => {
-                  const value = Number(e.value);
-                  const recorded = task.totalPomodoros || 0;
-                  if (value !== recorded && taskCompletedPomodoros === recorded) {
-                    toastWarning(t('manualPomodorosWarning'));
-                  }
-                  setTaskCompletedPomodoros(value);
-                }}
-                min={0}
-                max={task.estimatedPomodoros}
-              >
-                <NumberInput.Control>
-                  <NumberInput.IncrementTrigger />
-                  <NumberInput.DecrementTrigger />
-                </NumberInput.Control>
-                <NumberInput.Input />
-              </NumberInput.Root>
-              /
-              <NumberInput.Root
-                disabled={!!task.completedAt}
-                defaultValue={String(taskPomodoros)}
-                onValueChange={(e) => setTaskPomodoros(Number(e.value))}
-                spinOnPress={false}
-                width='80px'
-                min={1}
-              >
-                <NumberInput.Control>
-                  <NumberInput.IncrementTrigger />
-                  <NumberInput.DecrementTrigger />
-                </NumberInput.Control>
-                <NumberInput.Input />
-              </NumberInput.Root>
-            </Flex>
+              <Flex align='center' gap={2}>
+                <IconButton
+                  aria-label='Fewer sessions'
+                  size='xs'
+                  variant='outline'
+                  rounded='full'
+                  disabled={!!task.completedAt || taskPomodoros <= 1}
+                  onClick={() => setTaskPomodoros((n) => Math.max(1, n - 1))}
+                >
+                  <LuMinus />
+                </IconButton>
+                <Text fontSize='lg' fontWeight={700} minW='24px' textAlign='center' fontVariantNumeric='tabular-nums'>
+                  {taskPomodoros}
+                </Text>
+                <IconButton
+                  aria-label='More sessions'
+                  size='xs'
+                  variant='outline'
+                  rounded='full'
+                  disabled={!!task.completedAt || taskPomodoros >= 20}
+                  onClick={() => setTaskPomodoros((n) => Math.min(20, n + 1))}
+                >
+                  <LuPlus />
+                </IconButton>
+                <Text fontSize='xs' color={{ base: 'gray.400', _dark: 'gray.500' }} marginLeft='2px'>
+                  ≈ {taskPomodoros} timer {taskPomodoros === 1 ? 'run' : 'runs'}
+                </Text>
+              </Flex>
+            </Box>
 
-            <Flex gap={2} flex={{ base: '1', sm: '0' }}>
-              <IconButton
+            <Flex gap={2} flex={{ base: '1', sm: '0' }} justify='flex-end'>
+              <Button
+                size='sm'
+                variant='ghost'
                 onClick={() => handleOnTaskSubmit(false)}
-                transition={'all 0.3s'}
-                rounded={'lg'}
-                flex={{ base: '1', sm: '0' }}
-                bgColor='danger.subtle'
-                color='danger.fg'
-                _hover={{ bgColor: 'danger.muted' }}
                 data-pw-id='task-cancel-button'
               >
-                <TiTimes />
-              </IconButton>
-              <IconButton
-                disabled={!taskTitle}
+                Cancel
+              </Button>
+              <Button
+                size='sm'
+                colorPalette='green'
+                disabled={!taskTitle.trim()}
                 onClick={() => handleOnTaskSubmit(true)}
-                transition={'all 0.3s'}
-                rounded={'lg'}
-                flex={{ base: '1', sm: '0' }}
-                bgColor='success.subtle'
-                color='success.fg'
-                _hover={{ bgColor: 'success.muted' }}
                 data-pw-id='task-save-button'
               >
-                <FaCheck />
-              </IconButton>
+                {task.title ? 'Save' : 'Add task'}
+              </Button>
             </Flex>
           </Card.Footer>
         )}

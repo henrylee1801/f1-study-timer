@@ -39,13 +39,24 @@ export const Tasks = () => {
 
   return (
     <React.Fragment>
-      <HStack margin={'40px 0 20px'} display='flex' justifyContent='center'>
+      <HStack margin={'40px 0 16px'} display='flex' justifyContent='center'>
         <Separator flex='1' />
-        <Text flexShrink='0' fontSize={'sm'}>
+        <Text flexShrink='0' fontSize={'sm'} fontWeight='600' color={{ base: 'gray.600', _dark: 'gray.300' }}>
           {t('title')}
         </Text>
         <Separator flex='1' />
       </HStack>
+
+      {sortedTasks.length === 0 && !editingTask && (
+        <Text
+          textAlign='center'
+          fontSize='sm'
+          color={{ base: 'gray.400', _dark: 'gray.500' }}
+          marginBottom='16px'
+        >
+          {t('tasksHint')}
+        </Text>
+      )}
 
       <SortableList
         items={sortedTasks}
@@ -69,9 +80,9 @@ export const Tasks = () => {
         fontWeight={'semibold'}
         data-pw-id={'addTask-button'}
         size={'sm'}
-        mt={6}
+        mt={4}
       >
-        <LuCirclePlus size={25} />
+        <LuCirclePlus size={22} />
         {t('addTask')}
       </ZoneButton>
     </React.Fragment>
